@@ -2,7 +2,7 @@
 
 int main(void)
 {
-    int i, j, k, x[10], tmp;
+    int i, j, k, x[10], temp;
 
     for (i = 0; i < 10; i++) scanf("%d", &x[i]);
 
@@ -12,10 +12,9 @@ int main(void)
         {
             if (x[j - 1] < x[j])
             {
-                tmp = x[j];
-
+                temp = x[j];
                 x[j] = x[j - 1];
-                x[j - 1] = tmp;
+                x[j - 1] = temp;
             }
         }
     }

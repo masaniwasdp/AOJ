@@ -2,7 +2,7 @@
 
 int main(void)
 {
-    int i, n, a, b, c, tmp;
+    int i, n, a, b, c, t;
 
     scanf("%d", &n);
 
@@ -10,17 +10,17 @@ int main(void)
     {
         scanf("%d %d %d", &a, &b, &c);
 
-        tmp = c;
+        t = c;
 
         if (a >= b && a >= c)
         {
             c = a;
-            a = tmp;
+            a = t;
         }
         else if (b >= a && b >= c)
         {
             c = b;
-            b = tmp;
+            b = t;
         }
 
         if (a * a + b * b == c * c)
