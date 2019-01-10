@@ -2,8 +2,8 @@ import Control.Applicative
 
 
 solve :: [String] -> Int
- 
-solve xs = length [txt | txt <- xs, txt == reverse txt]
+
+solve = length . filter (\x -> x == reverse x)
 
 
 main :: IO ()

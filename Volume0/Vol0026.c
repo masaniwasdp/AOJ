@@ -2,7 +2,7 @@
 
 int main(void)
 {
-    int x, y, s, d, p[10][10] = {0};
+    int x, y, s, d, p[10][10] = { 0 };
 
     while (scanf("%d,%d,%d", &x, &y, &s) != EOF)
     {

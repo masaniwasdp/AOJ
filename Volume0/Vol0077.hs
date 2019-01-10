@@ -2,18 +2,18 @@ import Control.Applicative
 import Data.List (intercalate)
 
 
-runlength :: String -> String -> String
+decode :: String -> String -> String
 
-runlength txt "" = txt
+decode rs "" = reverse s
 
-runlength txt ('@' : n : x : xs) = runlength (txt ++ replicate (read [n]) x) xs
+decode rs ('@' : n : x : xs) = decode (replicate (read [n]) x : rs) xs
 
-runlength txt (x : xs) = runlength (txt ++ [x]) xs
+decode rs (x : xs) = decode (x : rs) xs
 
 
 solve :: [String] -> [String]
 
-solve xs = map (runlength "") xs
+solve = map (decode "")
 
 
 main :: IO ()
