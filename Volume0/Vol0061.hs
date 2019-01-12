@@ -1,5 +1,6 @@
 import Control.Applicative
 import Data.List (elemIndex, intercalate, nub, sort)
+import Data.List.Split (splitOn)
 import Data.Maybe (fromJust)
 
 
@@ -12,39 +13,29 @@ pull q ds ss = do
   s <- lookup q ds
   i <- elemIndex s ss
 
-  Just $ i + 1
+  Just (i + 1)
 
 
 solve :: ([Data], [Int]) -> [Int]
 
-solve (ds, qs) = [fromJust $ pull q ds ss | q <- qs]
+solve (ds, qs) = map (\q -> fromJust $ pull q ds ss) qs
   where
     ss = reverse . sort . nub . snd $ unzip ds
-
-
-split :: [String] -> String -> String -> [String]
-
-split ls s "" = ls ++ [s]
-
-split ls s (x : xs)
-  | x == ',' = split (ls ++ [s]) "" xs
-
-  | otherwise = split ls (s ++ [x]) xs
 
 
 dinput :: [Data] -> IO [Data]
 
 dinput xs = do
-  [p, s] <- map read <$> split [] "" <$> getLine
+  [p, s] <- map read . splitOn "," <$> getLine
 
   if p /= 0 || s /= 0
-    then dinput $ xs ++ [(p, s)]
-    else return xs
+    then dinput $ (p, s) : xs
+    else return $ reverse xs
 
 
 qinput :: IO [Int]
 
-qinput = map read <$> lines <$> getContents
+qinput = map read . lines <$> getContents
 
 
 main :: IO ()
