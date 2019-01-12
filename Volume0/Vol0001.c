@@ -1,32 +1,20 @@
 #include <stdio.h>
+#include <stdlib.h>
+
+static int cmp(void const *const lhs, void const *const rhs)
+{
+    return *((int *) rhs) - *((int *) lhs);
+}
 
 int main(void)
 {
-    int i, j, k, x[10], temp;
+    int i, xs[10];
 
-    for (i = 0; i < 10; i++) scanf("%d", &x[i]);
+    for (i = 0; i < 10; i++) scanf("%d", &xs[i]);
 
-    for (i = 0; i < 10; i++)
-    {
-        for (j = 9; j > i; j--)
-        {
-            if (x[j - 1] < x[j])
-            {
-                temp = x[j];
-                x[j] = x[j - 1];
-                x[j - 1] = temp;
-            }
-        }
-    }
+    qsort(xs, (sizeof xs) / (sizeof *xs), sizeof *xs, cmp);
 
-    for (i = 0, k = 0; i < 10; i++)
-    {
-        if (k >= 3) break;
-
-        printf("%d\n", x[i]);
-
-        k++;
-    }
+    for (i = 0; i < 3; i++) printf("%d\n", xs[i]);
 
     return 0;
 }
