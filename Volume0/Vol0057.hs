@@ -17,6 +17,6 @@ solve = map slice
 main :: IO ()
 
 main = do
-  xs <- map read <$> lines <$> getContents
+  xs <- map read . lines <$> getContents
 
   putStrLn . intercalate "\n" . map show $ solve xs

@@ -17,7 +17,7 @@ solve (n, s) = length . filter (\x -> sum x == s) $ enum n 0 9 []
 main :: IO ()
 
 main = do
-  [n, s] <- map read <$> words <$> getLine
+  [n, s] <- map read . words <$> getLine
 
   when (n /= 0 || s /= 0) $ do
     print $ solve (n, s)

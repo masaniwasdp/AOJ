@@ -1,11 +1,6 @@
 import Control.Applicative
 import Control.Monad (replicateM, when)
 
- 
-solve :: [Int] -> Int
-
-solve (x : xs) = sub x x xs
-
 
 sub :: Int -> Int -> [Int] -> Int
 
@@ -15,6 +10,11 @@ sub m c (x : xs)
   | x > c + x = sub (max m x) x xs
   | m > c + x = sub m (c + x) xs
   | otherwise = sub (c + x) (c + x) xs
+
+
+solve :: [Int] -> Int
+
+solve (x : xs) = sub x x xs
 
 
 main :: IO ()
