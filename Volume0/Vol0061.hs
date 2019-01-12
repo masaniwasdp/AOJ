@@ -9,9 +9,9 @@ type Data = (Int, Int)
 
 pull :: Int -> [Data] -> [Int] -> Maybe Int
 
-pull q ds ss = (+ 1) <$> idx
+pull q ds ss = (+ 1) <$> ix
   where
-    idx = (flip elemIndex) ss =<< lookup q ds
+    ix = (flip elemIndex) ss =<< lookup q ds
 
 
 solve :: ([Data], [Int]) -> [Int]
