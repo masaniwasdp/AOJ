@@ -6,9 +6,9 @@ data Era = M Date | T Date | S Date | H Date
 
 instance Show Era where
   show (H d) = "heisei " ++ show d
-  show (S d) = "showa " ++ show d
+  show (S d) = "showa "  ++ show d
   show (T d) = "taisho " ++ show d
-  show (M d) = "meiji " ++ show d
+  show (M d) = "meiji "  ++ show d
 
 
 data Date = Date Int Int Int deriving (Eq)
