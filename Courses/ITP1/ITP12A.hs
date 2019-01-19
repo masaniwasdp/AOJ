@@ -1,22 +1,13 @@
 import Control.Applicative
-import Data.List (intercalate)
 
 
-data Relation = L | R | E
-
-instance Show Relation where
-  show L = ">"
-  show R = "<"
-  show E = "=="
-
-
-solve :: (Int, Int) -> Relation
+solve :: (Int, Int) -> String
 
 solve (a, b)
-  | a > b = L
-  | a < b = R
+  | a > b = "a > b"
+  | a < b = "a < b"
 
-  | otherwise = E
+  | otherwise = "a == b"
 
 
 input :: String -> (Int, Int)
@@ -26,11 +17,6 @@ input s = (x, y)
     [x, y] = map read $ words s
 
 
-output :: Relation -> String
-
-output r = intercalate " " ["a", show r, "b"]
-
-
 main :: IO ()
 
-main = putStrLn . output . solve . input =<< getLine
+main = putStrLn . solve . input =<< getLine
