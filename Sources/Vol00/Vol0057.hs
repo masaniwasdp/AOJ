@@ -6,7 +6,7 @@ slice :: Int -> Int
 
 slice 0 = 1
 
-slice n = n + slice (n - 1)
+slice n = n + slice $ n - 1
 
 
 solve :: [Int] -> [Int]

@@ -2,7 +2,8 @@ import Control.Applicative
 import Data.List (intercalate)
 
 
-data Era = M Date | T Date | S Date | H Date
+data Era = M !Date | T !Date | S !Date | H !Date
+
 
 instance Show Era where
   show (H d) = "heisei " ++ show d
@@ -11,12 +12,14 @@ instance Show Era where
   show (M d) = "meiji "  ++ show d
 
 
-data Date = Date Int Int Int deriving (Eq)
+data Date = Date !Int !Int !Int deriving (Eq)
+
 
 instance Ord Date where
   a <= b = index a <= index b
     where
       index (Date y m d) = 366 * y + 31 * m + d
+
 
 instance Show Date where
   show (Date y m d) = intercalate " " $ map show [y, m, d]

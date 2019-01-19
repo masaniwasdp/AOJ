@@ -28,6 +28,7 @@ dinput xs = do
 
   if p /= 0 || s /= 0
     then dinput $ (p, s) : xs
+
     else return $ reverse xs
 
 

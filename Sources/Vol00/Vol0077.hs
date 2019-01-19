@@ -1,21 +1,22 @@
 import Control.Applicative
+import Data.Char (digitToInt)
 import Data.List (intercalate)
 
 
-decode :: String -> String -> String
+decode :: String -> String
 
-decode rs "" = reverse s
-
-decode rs ('@' : n : x : xs) = decode nrs xs
+decode xs = reverse $ loop "" xs
   where
-    nrs = replicate (read [n]) x : rs
+    loop s "" = s
 
-decode rs (x : xs) = decode (x : rs) xs
+    loop s ('@' : n : r : rs) = loop (replicate (digitToInt n) r ++ s) rs
+
+    loop s (r : rs) = loop (r : s) rs
 
 
 solve :: [String] -> [String]
 
-solve = map (decode "")
+solve = map decode
 
 
 main :: IO ()

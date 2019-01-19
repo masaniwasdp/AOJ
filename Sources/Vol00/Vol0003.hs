@@ -2,17 +2,12 @@ import Control.Applicative
 import Data.List (intercalate, sort)
 
 
-isTriangle :: Int -> Int -> Int -> Bool
-
-isTriangle x y z = a * a + b * b == c * c
-  where
-    [a, b, c] = sort [x, y, z]
-
-
 solve :: (Int, Int, Int) -> String
 
 solve (x, y, z)
-  | isTriangle x y z = "YES"
+  | x * x + y * y == z * z = "YES"
+  | y * y + z * z == x * x = "YES"
+  | z * z + x * x == y * y = "YES"
 
   | otherwise = "NO"
 

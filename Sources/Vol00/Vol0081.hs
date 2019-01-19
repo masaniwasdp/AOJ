@@ -21,6 +21,7 @@ reflect :: Vec -> Vec -> Vec
 reflect v p = magnitude p <.> (d <.> u - q)
   where
     d = 2 * (realPart u * realPart q + imagPart u * imagPart q)
+
     u = (recip $ magnitude v) <.> v
     q = (recip $ magnitude p) <.> p
 

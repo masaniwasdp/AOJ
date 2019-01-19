@@ -4,11 +4,13 @@ import Control.Monad (replicateM, when)
 
 sub :: Int -> Int -> [Int] -> Int
 
-sub m c [] = max m c
+sub c m [] = max c m
 
-sub m c (x : xs)
-  | x > c + x = sub (max m x) x xs
-  | m > c + x = sub m (c + x) xs
+sub c m (x : xs)
+  | x > c + x = sub x (max m x) xs
+
+  | m > c + x = sub (c + x) m xs
+
   | otherwise = sub (c + x) (c + x) xs
 
 

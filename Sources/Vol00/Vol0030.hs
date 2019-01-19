@@ -2,16 +2,19 @@ import Control.Applicative
 import Control.Monad (when)
 
 
-enum :: Int -> Int -> Int -> [Int] -> [[Int]]
+enum :: Int -> Int -> Int -> [[Int]]
 
-enum 1 s e cs = [x : cs | x <- [s .. e]]
+enum n s e = loop n s []
+  where
+    loop m u xs
+      | m < 1 = [x : xs | x <- [u .. e]]
 
-enum n s e cs = concat [enum (n - 1) (x + 1) e (x : cs) | x <- [s .. e]]
+      | otherwise = concat [loop (m - 1) (x + 1) (x : xs) | x <- [u .. e]]
 
 
 solve :: (Int, Int) -> Int
 
-solve (n, s) = length . filter (\x -> sum x == s) $ enum n 0 9 []
+solve (n, s) = length . filter (\x -> sum x == s) $ enum n 0 9
 
 
 main :: IO ()
