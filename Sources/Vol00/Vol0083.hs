@@ -2,7 +2,7 @@ import Control.Applicative
 import Data.List (intercalate)
 
 
-data Era = M !Date | T !Date | S !Date | H !Date
+data Era = M Date | T Date | S Date | H Date
 
 
 instance Show Era where
@@ -12,7 +12,7 @@ instance Show Era where
   show (M d) = "meiji "  ++ show d
 
 
-data Date = Date !Int !Int !Int deriving (Eq)
+data Date = Date Int Int Int deriving (Eq)
 
 
 instance Ord Date where
