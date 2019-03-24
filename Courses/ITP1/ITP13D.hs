@@ -3,7 +3,7 @@ import Control.Applicative
 
 solve :: (Int, Int, Int) -> Int
 
-solve (a, b, c) = length $ filter (\x -> mod c x == 0) [a .. b]
+solve (a, b, c) = length $ filter (\ x -> mod c x == 0) [a .. b]
 
 
 input :: String -> (Int, Int, Int)

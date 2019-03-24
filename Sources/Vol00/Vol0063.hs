@@ -3,7 +3,7 @@ import Control.Applicative
 
 solve :: [String] -> Int
 
-solve = length . filter (\x -> x == reverse x)
+solve = length . filter (\ x -> x == reverse x)
 
 
 main :: IO ()

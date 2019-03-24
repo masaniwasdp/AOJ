@@ -16,7 +16,7 @@ pull q ds ss = (+ 1) <$> ix
 
 solve :: ([Data], [Int]) -> [Int]
 
-solve (ds, qs) = map (\q -> fromJust $ pull q ds ss) qs
+solve (ds, qs) = map (\ q -> fromJust $ pull q ds ss) qs
   where
     ss = reverse . sort . nub . snd $ unzip ds
 

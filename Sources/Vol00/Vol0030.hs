@@ -14,7 +14,7 @@ enum n s e = loop n s []
 
 solve :: (Int, Int) -> Int
 
-solve (n, s) = length . filter (\x -> sum x == s) $ enum n 0 9
+solve (n, s) = length . filter (\ x -> sum x == s) $ enum n 0 9
 
 
 main :: IO ()
