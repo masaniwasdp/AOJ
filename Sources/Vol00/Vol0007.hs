@@ -6,7 +6,7 @@ solve :: Int -> Int
 
 solve n = (iterate next 100000) !! n
   where
-    next = \x -> (* 1000) $ ceiling (1.05 * toRational x / 1000)
+    next = \ x -> (* 1000) $ ceiling (1.05 * toRational x / 1000)
 
 
 input :: String -> Int
